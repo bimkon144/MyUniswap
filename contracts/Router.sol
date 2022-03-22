@@ -9,10 +9,7 @@ import "hardhat/console.sol";
 
 
 contract Router is ReentrancyGuard, Ownable {
-    // uint256 public swapFee;
-    // uint256 public protocolPerformanceFee;
-    // address public protocolPerformanceFeeRecipient;
-    // uint256 public feeDecimals;
+
     address public registry;
     address public factory;
 
