@@ -15,15 +15,15 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 
 module.exports = {
-  solidity: "0.8.4",
-  networks: {
-    rinkeby: {
-      url: `https://eth-rinkeby.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
-      accounts: [`${process.env.PRIVATE_KEY}`]
-    }
-  },
-  etherscan: {
-    apiKey: `${process.env.ETHERSCAN_KEY}`
-  }
+  solidity: "0.8.10",
+  // networks: {
+  //   rinkeby: {
+  //     url: `https://eth-rinkeby.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
+  //     accounts: [`${process.env.PRIVATE_KEY}`]
+  //   }
+  // },
+  // etherscan: {
+  //   apiKey: `${process.env.ETHERSCAN_KEY}`
+  // }
 
 };

@@ -104,10 +104,10 @@ describe("Router", () => {
         expect(await pairContract.getReserveOfToken(token0.address)).to.equal(1000);
         expect(await pairContract.getReserveOfToken(token1.address)).to.equal(1000);
         await router.swapIn(token0.address,token1.address,500,0);
-        expect(await pairContract.getReserveOfToken(token0.address)).to.equal(1500);
-        expect(await pairContract.getReserveOfToken(token1.address)).to.equal(668);
+        expect(await pairContract.getReserveOfToken(token0.address)).to.equal(1497);
+        expect(await pairContract.getReserveOfToken(token1.address)).to.equal(669);
         expect(await token0.balanceOf(owner.address)).to.equal(8500);
-        expect(await token1.balanceOf(owner.address)).to.equal(9332);
+        expect(await token1.balanceOf(owner.address)).to.equal(9331);
       });
     })
 
@@ -133,9 +133,9 @@ describe("Router", () => {
         expect(await pairContract.getReserveOfToken(token0.address)).to.equal(2000);
         expect(await pairContract.getReserveOfToken(token1.address)).to.equal(2000);
         await router.swapOut(token0.address,token1.address,1000,2222);
-        expect(await pairContract.getReserveOfToken(token0.address)).to.equal(4007);
+        expect(await pairContract.getReserveOfToken(token0.address)).to.equal(4012);
         expect(await pairContract.getReserveOfToken(token1.address)).to.equal(1000);
-        expect(await token0.balanceOf(owner.address)).to.equal(5993);
+        expect(await token0.balanceOf(owner.address)).to.equal(5983);
         expect(await token1.balanceOf(owner.address)).to.equal(9000);
       });
     })

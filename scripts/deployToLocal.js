@@ -49,8 +49,12 @@ async function main() {
   await feeParameters.setFeeParamseters(3,5,user.address,3);
 
 
+
   //создаем пару
   await factory.createPair(token0.address, token1.address);
+  registry.on("NewPair", (to, amount, from, ) => {
+    console.log('11111111111111',to, 'amount',amount, 'from',from, );
+  });
   const pairAddress = await registry.getAddressOfPair(token0.address, token1.address);
   console.log('pairAddress',pairAddress)
 
@@ -67,6 +71,7 @@ async function main() {
 
   // добавляем первичную ликвидность
   await router.addLiquidity(token0.address,token1.address, 1000, 1000);
+
   const lpTokens = await pairContract.balanceOf(owner.address)
   const totalSupplyOfLPTokensOnPair =  await pairContract.totalSupply();
   console.log('number of LP COINS that got owner', lpTokens, 'number of total supply LP on pair', totalSupplyOfLPTokensOnPair);
@@ -91,14 +96,11 @@ async function main() {
   const balanceOfToken0BeforeSwap = await token0.balanceOf(owner.address);
   const balanceOfToken1BeforeSwap = await token1.balanceOf(owner.address);
   console.log('balanceOfToken0BeforeSwap', balanceOfToken0BeforeSwap, 'balanceOfToken1BeforeSwap', balanceOfToken1BeforeSwap)
-  await router.swapOut(token0.address,token1.address,1000,0);
+  await router.swapIn(token0.address,token1.address,1000,500);
   const balanceOfToken0AfterSwap = await token0.balanceOf(owner.address);
   const balanceOfToken1AfterSwap = await token1.balanceOf(owner.address);
   console.log('balanceOfToken0AfterSwap', balanceOfToken0AfterSwap, 'balanceOfToken1AfterSwap', balanceOfToken1AfterSwap)
-  const amountOut = await pairContract.getAmountOut(1000,2000,2000,3,5,3);
-  const AmoutIn = await pairContract.getAmountIn(665,2000,2000,3,5,3);
-  console.log('amountOut', amountOut, ' AmoutIn',  AmoutIn);
-}
+  }
 
 
 main()
